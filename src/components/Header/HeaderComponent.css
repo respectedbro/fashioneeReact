@@ -1,0 +1,138 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-1800 {
+  max-width: 1800px;
+  width: 100%;
+  margin: 50px auto 0 auto;
+}
+
+.header .left-side {
+  display: flex;
+  gap: 65px;
+  align-items: center;
+}
+
+.header .left-side .logo-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+/*==============================*/
+.header .left-side .logo-container .burger-menu .burger-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+.header .left-side .logo-container .burger-menu .burger {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: none;
+  background: transparent;
+  width: 22px;
+  height: 14px;
+}
+.header .left-side .logo-container .burger-menu .burger::before,
+.header .left-side .logo-container .burger-menu .burger::after {
+  content: "";
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  background: #000;
+}
+.header .left-side .logo-container .burger-menu .burger::before {
+  top: 0;
+  box-shadow: 0 11px 0 #000;
+  transition: box-shadow 0.3s 0.15s, top 0.3s 0.15s, transform 0.3s;
+}
+.header .left-side .logo-container .burger-menu .burger::after {
+  bottom: 6.5px;
+  transition: bottom 0.3s 0.15s, transform 0.3s;
+}
+.header
+  .left-side
+  .logo-container
+  .burger-menu
+  .burger-checkbox:checked
+  + .burger::before {
+  top: 2px;
+  transform: rotate(45deg);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+}
+.header
+  .left-side
+  .logo-container
+  .burger-menu
+  .burger-checkbox:checked
+  + .burger::after {
+  bottom: 10px;
+  transform: rotate(-45deg);
+  transition: bottom 0.3s, transform 0.3s 0.15s;
+}
+
+.header .left-side .logo-container .logo {
+  display: flex;
+}
+
+.header .right-side {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.header .right-side .header-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header .right-side .header-icon .counter {
+  background-color: #000000;
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+@media screen and (max-width: 1080px) {
+  .hero-section .hero-line {
+    display: none;
+  }
+
+  .hero-section .hero-image {
+    margin-right: 0;
+  }
+  .menu {
+    display: none;
+  }
+
+  .header .right-side {
+    display: none;
+  }
+
+  .shop {
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shop {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .hero-section {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

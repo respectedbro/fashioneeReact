@@ -1,0 +1,197 @@
+* {
+  font-family: "Raleway", sans-serif;
+  color: #444;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.container .input {
+  border: none;
+  border-bottom: 1px solid rgba(68, 68, 68, 20%);
+  width: 100%;
+  color: rgba(68, 68, 68, 50%);
+  outline: none;
+  padding: 0 0 15px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.container .button-wrapper {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  max-width: 240px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.container .button-wrapper .button {
+  font-family: "Raleway", sans-serif;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  border: none;
+  background-color: rgba(0, 0, 0, 1);
+  padding: 17px 74px;
+  width: 100%;
+  text-align: center;
+}
+
+.container .button-wrapper .vertical-line {
+  width: 2px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.container .button {
+  cursor: pointer;
+}
+
+.container .price {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.container .price .current-price {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  color: #000;
+}
+
+.container .price .old-price {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: line-through;
+}
+
+.container .custom-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.container .custom-list .item {
+  color: rgba(68, 68, 68, 1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.container .custom-list .item:hover {
+  color: rgba(255, 142, 142, 1);
+}
+
+.container .custom-list .item::before {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-image: url("assets/icons/square.svg");
+}
+
+.container .custom-list .item:hover::before {
+  background-image: url("assets/icons/square-pink.svg");
+}
+
+.container .custom-list .item.active {
+  color: rgba(255, 142, 142, 1);
+}
+
+.container .custom-list .item.active::before {
+  content: "";
+  background-image: url("assets/icons/category-line.svg");
+  display: block;
+  width: 25px;
+  height: 3px;
+}
+
+.container .find-us .find-us-text {
+  margin: 0 0 20px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #000;
+}
+
+.container .find-us .find-us-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.container .find-us .find-us-links .find-us-link a {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.container .find-us .find-us-links .line {
+  border-top: 1px solid #444;
+  height: 1px;
+  width: 10px;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.menu .menu-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.menu .menu-item span {
+  color: inherit;
+}
+
+.menu .menu-item .arrow-hover {
+  display: none;
+}
+
+.menu .menu-item.active,
+.menu .menu-item:hover {
+  color: #ff8e8e;
+}
+
+.menu .menu-item.active .arrow-default {
+  display: none;
+}
+
+.menu .menu-item.active .arrow-hover {
+  display: inline-block;
+}
+
+.menu .menu-item:hover .arrow-hover {
+  display: inline-block;
+}
+
+.menu .menu-item:hover .arrow-default {
+  display: none;
+}
