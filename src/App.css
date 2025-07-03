@@ -58,6 +58,8 @@
   display: flex;
   gap: 15px;
   align-items: center;
+  max-width: 125px;
+  width: 100%;
 }
 
 .container .price .current-price {

@@ -7,6 +7,7 @@ import ContentBlock from "../../components/ContentBlock/ContentBlock.jsx";
 import FooterComponent from "../../components/Footer/FooterComponent.jsx";
 import SidebarComponent from "../../components/Sidebar/SidebarComponent.jsx";
 import CardComponent from "../../components/Card/CardComponent.jsx";
+import Cart from '../Cart/Cart.jsx';
 
 const Showcase = () => {
   return (
@@ -49,6 +50,7 @@ const Showcase = () => {
           </div>
         </section>
       </div>
+      <Cart/>
       <FooterComponent />
     </>
   );

@@ -1,0 +1,92 @@
+.shop .products-wrapper .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px 29px;
+}
+
+.shop .products-wrapper .products .product {
+    max-width: 262px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shop .products-wrapper .products .product .photo {
+    position: relative;
+    height: 360px;
+}
+.shop .products-wrapper .products .product .photo img {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+
+.shop .products-wrapper .products .product .photo .top-bar {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 222px;
+}
+
+.shop .products-wrapper .products .product .photo .top-bar .labels {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.shop .products-wrapper .products .product .photo .top-bar .labels .label {
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 5px 10px;
+    background: #ff8e8e;
+}
+
+.shop .products-wrapper .products .product .photo .top-bar .labels .label.new {
+    background: #95ccb5;
+}
+
+.shop .products-wrapper .products .product .info {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.shop .products-wrapper .products .product .info .name {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.shop .products-wrapper .products .product .info .price {
+    display: flex;
+    gap: 15px;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    align-items: center;
+}
+
+.shop .products-wrapper .products .product .info .price .current-price {
+    font-family: "Josefin Sans", sans-serif;
+    color: #000;
+}
+
+.shop .products-wrapper .products .product .info .price .old-price {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: line-through;
+}

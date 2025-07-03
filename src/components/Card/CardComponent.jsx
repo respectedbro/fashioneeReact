@@ -1,250 +1,39 @@
-import heart from "../../assets/icons/heart.svg";
+import heart from '../../assets/icons/heart.svg';
+import './CardComponent.css'
+import productsData from '../../../products.json';
 
 const CardComponent = () => {
-  return (
-    <>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
+    const displayedProducts = productsData.products.slice(0, 12);
+
+    return (
+        <>
+            <div className="products">
+                {displayedProducts.map((product) =>(
+                    <div className="product" key={product.id}>
+                        <div className="photo">
+                            <img src={product.image} alt={product.name}/>
+                            <div className="top-bar">
+                                <div className="labels">
+                                    {product.isSale && <span className="label sale">Sale</span>}
+                                    {product.isNew && <span className="label new">New</span>}
+                                </div>
+                                <div className="favorites">
+                                    <img src={heart} alt="heart"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="info">
+                            <div className="name">{product.name}</div>
+                            <div className="price">
+                                <div className="current-price">{product.price}</div>
+                                <div className="old-price">{product.oldPrice}</div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-      <div className="product">
-        <div className="photo">
-          <div className="top-bar">
-            <div className="labels">
-              <div className="label sale">Sale</div>
-              <div className="label new">New</div>
-            </div>
-            <div className="favorites">
-              <img src={heart} alt="heart" />
-            </div>
-          </div>
-        </div>
-        <div className="info">
-          <div className="name">Textured turtleneck with zip</div>
-          <div className="price">
-            <div className="current-price">$53.99</div>
-            <div className="old-price">$52.99</div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 };
 
 export default CardComponent;
