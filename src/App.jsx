@@ -13,7 +13,11 @@ function App() {
     return (
         <>
             <HeaderComponent toggleCart={setShowCart}/>
-            {showCart ? <ContentCartBlock/> : <ContentShopBlock/>}
+            {showCart ? (
+                <ContentCartBlock toggleCart={setShowCart} />
+            ) : (
+                <ContentShopBlock toggleCart={setShowCart} />
+            )}
             {showCart ? <Cart /> : <ShopComponent />}
             <FooterComponent />
         </>

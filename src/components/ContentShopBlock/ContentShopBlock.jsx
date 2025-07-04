@@ -1,15 +1,15 @@
 import "./ContentShopBlock.css";
 import heroImg from "../../assets/images/no-photo.webp";
 
-const ContentShopBlock = () => {
+const ContentShopBlock = ({toggleCart}) => {
   return (
     <section className="hero-section container-1800">
       <div className="title-block">
         <div className="title">
           <h1>Shop</h1>
           <div className="menu">
-            <div className="menu-item">
-              <span>Home</span>
+            <div className="menu-item" onClick={() => toggleCart(true)}>
+              <span>Cart</span>
             </div>
             <div className="menu-item active">
               <span>Shop</span>

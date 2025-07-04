@@ -1,6 +1,6 @@
 import cartImg from '../../assets/images/no-photo.webp';
 import './ContentCartBlock.css'
-const ContentCartBlock = () => {
+const ContentCartBlock = ({toggleCart}) => {
     return (
         <section className="hero-section container-1800">
             <div className="title-block">
@@ -10,7 +10,7 @@ const ContentCartBlock = () => {
                         <div className="menu-item">
                             <span>Home</span>
                         </div>
-                        <div className="menu-item">
+                        <div className="menu-item" onClick={() => toggleCart(false)}>
                             <span>Shop</span>
                         </div>
                         <div className="menu-item active">
