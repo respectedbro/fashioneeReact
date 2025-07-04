@@ -1,19 +1,17 @@
-import "./Showcase.css";
+import "./ShopComponent.css";
 import arrowL from "../../assets/icons/arrow-left.svg";
 import arrowR from "../../assets/icons/arrow-right.svg";
 
 import HeaderComponent from "../../components/Header/HeaderComponent.jsx";
-import ContentBlock from "../../components/ContentBlock/ContentBlock.jsx";
+import ContentShopBlock from "../../components/ContentShopBlock/ContentShopBlock.jsx";
 import FooterComponent from "../../components/Footer/FooterComponent.jsx";
 import SidebarComponent from "../../components/Sidebar/SidebarComponent.jsx";
 import CardComponent from "../../components/Card/CardComponent.jsx";
 import Cart from '../Cart/Cart.jsx';
 
-const Showcase = () => {
+const ShopComponent = () => {
   return (
     <>
-      <HeaderComponent />
-      <ContentBlock />
       <div className="container">
         <section className="shop">
           <SidebarComponent />
@@ -50,10 +48,9 @@ const Showcase = () => {
           </div>
         </section>
       </div>
-      <Cart/>
-      <FooterComponent />
+      {/*<Cart/>*/}
     </>
   );
 };
 
-export default Showcase;
+export default ShopComponent;

@@ -8,7 +8,7 @@ import userIcon from "../../assets/icons/user.svg";
 import heartIcon from "../../assets/icons/heart.svg";
 import cartIcon from "../../assets/icons/cart.svg";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ toggleCart }) => {
   return (
     <header className="header container-1800">
       <div className="left-side">
@@ -34,7 +34,7 @@ const HeaderComponent = () => {
             <img className="arrow-default" src={arrow} alt="arrow" />
             <img className="arrow-hover" src={arrowPink} alt="arrow-pink" />
           </div>
-          <div className="menu-item active">
+          <div className="menu-item active" onClick={() => toggleCart(false)}>
             <span>Shop</span>
             <img className="arrow-default" src={arrow} alt="arrow" />
             <img className="arrow-hover" src={arrowPink} alt="arrow-pink" />
@@ -58,7 +58,7 @@ const HeaderComponent = () => {
           <img src={heartIcon} alt="ico" />
           <div className="counter">1</div>
         </div>
-        <div className="header-icon">
+        <div className="header-icon" onClick={() => toggleCart(true)} >
           <img src={cartIcon} alt="ico" />
           <div className="counter">2</div>
         </div>

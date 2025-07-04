@@ -91,6 +91,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 }
 
 .header .right-side .header-icon .counter {

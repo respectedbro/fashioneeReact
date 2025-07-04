@@ -2,37 +2,12 @@ import './Cart.css'
 import cartImg from '../../assets/images/no-photo.webp'
 import arrowWhite from '../../assets/icons/arrow-white.svg'
 
-import HeaderComponent from '../../components/Header/HeaderComponent.jsx';
+
 const Cart = () => {
     return (
         <>
-        <HeaderComponent/>
-    <section className="hero-section container-1800">
-        <div className="title-block">
-            <div className="title">
-                <h1>Cart</h1>
-                <div className="menu">
-                    <div className="menu-item">
-                        <span>Home</span>
-                    </div>
-                    <div className="menu-item">
-                        <span>Shop</span>
-                    </div>
-                    <div className="menu-item active">
-                        <span>Cart</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="hero-line"></div>
-        </div>
-        <div className="hero-image">
-            <img src={cartImg} alt="photo"/>
-        </div>
-    </section>
-
     <div className="container">
-        <div className="cart">
+        <section className="cart">
             <div className="order-wrapper">
                 <div className="product-list">
                     <div className="product">
@@ -145,8 +120,9 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
+
     </>
     )
 }

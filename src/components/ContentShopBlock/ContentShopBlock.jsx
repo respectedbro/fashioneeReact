@@ -1,7 +1,7 @@
-import "./ContentBlock.css";
+import "./ContentShopBlock.css";
 import heroImg from "../../assets/images/no-photo.webp";
 
-const ContentBlock = () => {
+const ContentShopBlock = () => {
   return (
     <section className="hero-section container-1800">
       <div className="title-block">
@@ -26,4 +26,4 @@ const ContentBlock = () => {
   );
 };
 
-export default ContentBlock;
+export default ContentShopBlock;
