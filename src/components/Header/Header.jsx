@@ -1,4 +1,4 @@
-import "./HeaderComponent.css";
+import "./Header.css";
 
 import logo from "../../assets/icons/logo.svg";
 import arrow from "../../assets/icons/arrow.svg";
@@ -8,7 +8,7 @@ import userIcon from "../../assets/icons/user.svg";
 import heartIcon from "../../assets/icons/heart.svg";
 import cartIcon from "../../assets/icons/cart.svg";
 
-const HeaderComponent = ({ toggleCart }) => {
+const Header = ({ setCurrentPage, favoritesCount }) => {
   return (
     <header className="header container-1800">
       <div className="left-side">
@@ -34,7 +34,10 @@ const HeaderComponent = ({ toggleCart }) => {
             <img className="arrow-default" src={arrow} alt="arrow" />
             <img className="arrow-hover" src={arrowPink} alt="arrow-pink" />
           </div>
-          <div className="menu-item active" onClick={() => toggleCart(false)}>
+          <div
+            className="menu-item active"
+            onClick={() => setCurrentPage("Shop")}
+          >
             <span>Shop</span>
             <img className="arrow-default" src={arrow} alt="arrow" />
             <img className="arrow-hover" src={arrowPink} alt="arrow-pink" />
@@ -56,9 +59,9 @@ const HeaderComponent = ({ toggleCart }) => {
         </div>
         <div className="header-icon">
           <img src={heartIcon} alt="ico" />
-          <div className="counter">1</div>
+          <div className="counter">{favoritesCount}</div>
         </div>
-        <div className="header-icon" onClick={() => toggleCart(true)} >
+        <div className="header-icon" onClick={() => setCurrentPage("Cart")}>
           <img src={cartIcon} alt="ico" />
           <div className="counter">2</div>
         </div>
@@ -67,4 +70,4 @@ const HeaderComponent = ({ toggleCart }) => {
   );
 };
 
-export default HeaderComponent;
+export default Header;

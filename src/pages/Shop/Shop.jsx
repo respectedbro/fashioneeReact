@@ -1,20 +1,15 @@
-import "./ShopComponent.css";
+import "./Shop.css";
 import arrowL from "../../assets/icons/arrow-left.svg";
 import arrowR from "../../assets/icons/arrow-right.svg";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
+import Card from "../../components/Card/Card.jsx";
 
-import HeaderComponent from "../../components/Header/HeaderComponent.jsx";
-import ContentShopBlock from "../../components/ContentShopBlock/ContentShopBlock.jsx";
-import FooterComponent from "../../components/Footer/FooterComponent.jsx";
-import SidebarComponent from "../../components/Sidebar/SidebarComponent.jsx";
-import CardComponent from "../../components/Card/CardComponent.jsx";
-import Cart from '../Cart/Cart.jsx';
-
-const ShopComponent = () => {
+const Shop = ({ setFavoritesCount }) => {
   return (
     <>
       <div className="container">
         <section className="shop">
-          <SidebarComponent />
+          <Sidebar />
           <div className="products-wrapper">
             <div className="sort-and-count">
               <div className="products-count">
@@ -30,7 +25,7 @@ const ShopComponent = () => {
               </div>
             </div>
             <div className="products">
-              <CardComponent />
+              <Card setFavoritesCount={setFavoritesCount} />
             </div>
             <div className="pagination">
               <div className="button left">
@@ -53,4 +48,4 @@ const ShopComponent = () => {
   );
 };
 
-export default ShopComponent;
+export default Shop;

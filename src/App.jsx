@@ -1,27 +1,25 @@
-import './App.css';
-import ShopComponent from './pages/Shop/ShopComponent.jsx';
-import HeaderComponent from './components/Header/HeaderComponent.jsx';
-import ContentShopBlock from './components/ContentShopBlock/ContentShopBlock.jsx';
-import FooterComponent from './components/Footer/FooterComponent.jsx';
-import Cart from './pages/Cart/Cart.jsx';
-import {useState} from 'react';
-import ContentCartBlock from './components/ContentCartBlock/ContentCartBlock.jsx';
+import "./App.css";
+import Shop from "./pages/Shop/Shop.jsx";
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import Cart from "./pages/Cart/Cart.jsx";
+import ContentBlock from "./components/ContentBlock/ContentBlock.jsx";
+import { useState } from "react";
 
 function App() {
-    const [showCart, setShowCart] = useState(false);
+  const [currentPage, setCurrentPage] = useState("Shop");
+  const [favoritesCount, setFavoritesCount] = useState(0);
 
-    return (
-        <>
-            <HeaderComponent toggleCart={setShowCart}/>
-            {showCart ? (
-                <ContentCartBlock toggleCart={setShowCart} />
-            ) : (
-                <ContentShopBlock toggleCart={setShowCart} />
-            )}
-            {showCart ? <Cart /> : <ShopComponent />}
-            <FooterComponent />
-        </>
-    );
+  return (
+    <>
+      <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount} />
+      <ContentBlock currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {currentPage === "Shop" && <Shop setFavoritesCount={setFavoritesCount} />}
+      {currentPage === "Cart" && <Cart />}
+
+      <Footer />
+    </>
+  );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import "./FooterComponent.css";
+import "./Footer.css";
 
 import payoneer from "../../assets/icons/poneer.svg";
 import paypal from "../../assets/icons/ppal.svg";
@@ -7,7 +7,7 @@ import visa from "../../assets/icons/visa.svg";
 import sendIcon from "../../assets/icons/send.svg";
 import logo from "../../assets/icons/logo.svg";
 
-const FooterComponent = () => {
+const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
@@ -128,4 +128,4 @@ const FooterComponent = () => {
   );
 };
 
-export default FooterComponent;
+export default Footer;
