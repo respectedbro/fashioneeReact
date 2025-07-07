@@ -7,6 +7,7 @@ import { useState } from "react";
 const Card = ({ setFavoritesCount }) => {
   const displayedProducts = productsData.products.slice(0, 12);
 
+
   const [favorites, setFavorites] = useState(
     Array(displayedProducts.length).fill(false)
   );
@@ -41,6 +42,14 @@ const Card = ({ setFavoritesCount }) => {
             <div className="price">
               <div className="current-price">{product.price}</div>
               <div className="old-price">{product.oldPrice}</div>
+            </div>
+          </div>
+          <div className="buy-product">
+            <button className="buy-button">Buy</button>
+            <div className="quantity">
+              <div className="count-button">-</div>
+              <div className="count">1</div>
+              <div className="count-button">+</div>
             </div>
           </div>
         </div>

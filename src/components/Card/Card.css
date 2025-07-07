@@ -93,3 +93,36 @@
 .favorites {
   cursor: pointer;
 }
+
+.buy-button {
+  width: 100%;
+  padding: 12px;
+}
+
+.price-and-quantity {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+.quantity {
+  background: #f8f8fb;
+  display: flex;
+  gap: 20px;
+  padding: 17px 23px;
+  justify-content: space-evenly;
+}
+
+
+.count-button {
+  cursor: pointer;
+  color: #999;
+  font-size: 20px;
+}
+
+.count {
+  color: #000;
+  font-size: 18px;
+}
+

@@ -9,10 +9,13 @@ import { useState } from "react";
 function App() {
   const [currentPage, setCurrentPage] = useState("Shop");
   const [favoritesCount, setFavoritesCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0)
 
   return (
     <>
-      <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount} />
+      <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount}
+      cartCount={cartCount}
+      />
       <ContentBlock currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {currentPage === "Shop" && <Shop setFavoritesCount={setFavoritesCount} />}
       {currentPage === "Cart" && <Cart />}

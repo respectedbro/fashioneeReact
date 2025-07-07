@@ -8,7 +8,7 @@ import userIcon from "../../assets/icons/user.svg";
 import heartIcon from "../../assets/icons/heart.svg";
 import cartIcon from "../../assets/icons/cart.svg";
 
-const Header = ({ setCurrentPage, favoritesCount }) => {
+const Header = ({ setCurrentPage, favoritesCount, cartCount }) => {
   return (
     <header className="header container-1800">
       <div className="left-side">
@@ -63,7 +63,7 @@ const Header = ({ setCurrentPage, favoritesCount }) => {
         </div>
         <div className="header-icon" onClick={() => setCurrentPage("Cart")}>
           <img src={cartIcon} alt="ico" />
-          <div className="counter">2</div>
+          <div className="counter">{cartCount}</div>
         </div>
       </div>
     </header>
