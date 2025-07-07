@@ -4,9 +4,8 @@ import arrowR from "../../assets/icons/arrow-right.svg";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Card from "../../components/Card/Card.jsx";
 
-const Shop = ({ setFavoritesCount }) => {
+const Shop = ({ setFavoritesCount, setCartCount, cartCount }) => {
   return (
-    <>
       <div className="container">
         <section className="shop">
           <Sidebar />
@@ -25,7 +24,10 @@ const Shop = ({ setFavoritesCount }) => {
               </div>
             </div>
             <div className="products">
-              <Card setFavoritesCount={setFavoritesCount} />
+              <Card setFavoritesCount={setFavoritesCount}
+              setCartCount={setCartCount}
+                    cartCount={cartCount}
+              />
             </div>
             <div className="pagination">
               <div className="button left">
@@ -43,8 +45,6 @@ const Shop = ({ setFavoritesCount }) => {
           </div>
         </section>
       </div>
-      {/*<Cart/>*/}
-    </>
   );
 };
 

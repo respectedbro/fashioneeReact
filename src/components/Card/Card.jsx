@@ -4,13 +4,19 @@ import "./Card.css";
 import productsData from "../../../products.json";
 import { useState } from "react";
 
-const Card = ({ setFavoritesCount }) => {
+const Card = ({ setFavoritesCount, setCartCount, cartCount }) => {
   const displayedProducts = productsData.products.slice(0, 12);
-
 
   const [favorites, setFavorites] = useState(
     Array(displayedProducts.length).fill(false)
   );
+
+  const [showQuantity, setShowQuantity] = useState(
+      Array(displayedProducts.length).fill(false)
+  );
+
+
+
 
   const toggleFavorite = (index) => {
     const newFavorites = [...favorites];
@@ -20,6 +26,15 @@ const Card = ({ setFavoritesCount }) => {
     const count = newFavorites.filter((item) => item).length;
     setFavoritesCount(count);
   };
+
+  const handleBuyToQuantity = (index) => {
+    const newShowQuantity = [...showQuantity]
+    newShowQuantity[index] = true
+    setShowQuantity(newShowQuantity)
+
+    const count = newShowQuantity.filter((item) => item).length;
+    setCartCount(count);
+  }
 
   return (
     <div className="products">
@@ -45,12 +60,15 @@ const Card = ({ setFavoritesCount }) => {
             </div>
           </div>
           <div className="buy-product">
-            <button className="buy-button">Buy</button>
-            <div className="quantity">
-              <div className="count-button">-</div>
-              <div className="count">1</div>
-              <div className="count-button">+</div>
-            </div>
+            {!showQuantity[index] ? (
+                <button className="buy-button" onClick={() => handleBuyToQuantity(index)}>Buy</button>
+            ) : (
+                <div className="quantity">
+                  <div className="count-button">-</div>
+                  <div className="count">{cartCount}</div>
+                  <div className="count-button" onClick={() => handleBuyToQuantity(index)}>+</div>
+                </div>
+            )}
           </div>
         </div>
       ))}
