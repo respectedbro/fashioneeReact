@@ -4,37 +4,39 @@ import "./Card.css";
 import productsData from "../../../products.json";
 import { useState } from "react";
 
-const Card = ({ setFavoritesCount, setCartCount, cartCount }) => {
+const Card = ({ setFavoritesCount, setCartCount }) => {
   const displayedProducts = productsData.products.slice(0, 12);
 
   const [favorites, setFavorites] = useState(
     Array(displayedProducts.length).fill(false)
   );
 
-  const [showQuantity, setShowQuantity] = useState(
-      Array(displayedProducts.length).fill(false)
+  const [cartItems, setCartItems] = useState(
+    Array(displayedProducts.length).fill(0)
   );
-
-
-
 
   const toggleFavorite = (index) => {
     const newFavorites = [...favorites];
     newFavorites[index] = !newFavorites[index];
     setFavorites(newFavorites);
-
-    const count = newFavorites.filter((item) => item).length;
-    setFavoritesCount(count);
+    setFavoritesCount(newFavorites.filter((item) => item).length);
   };
 
-  const handleBuyToQuantity = (index) => {
-    const newShowQuantity = [...showQuantity]
-    newShowQuantity[index] = true
-    setShowQuantity(newShowQuantity)
+  const handleAddToCart = (index) => {
+    const newCartItems = [...cartItems];
+    newCartItems[index] += 1;
+    setCartItems(newCartItems);
+    setCartCount(newCartItems.reduce((sum, item) => sum + item, 0));
+  };
 
-    const count = newShowQuantity.filter((item) => item).length;
-    setCartCount(count);
-  }
+  const handleRemoveFromCart = (index) => {
+    if (cartItems[index] > 0) {
+      const newCartItems = [...cartItems];
+      newCartItems[index] -= 1;
+      setCartItems(newCartItems);
+      setCartCount(newCartItems.reduce((sum, item) => sum + item, 0));
+    }
+  };
 
   return (
     <div className="products">
@@ -60,14 +62,29 @@ const Card = ({ setFavoritesCount, setCartCount, cartCount }) => {
             </div>
           </div>
           <div className="buy-product">
-            {!showQuantity[index] ? (
-                <button className="buy-button" onClick={() => handleBuyToQuantity(index)}>Buy</button>
+            {cartItems[index] === 0 ? (
+              <button
+                className="buy-button"
+                onClick={() => handleAddToCart(index)}
+              >
+                Buy
+              </button>
             ) : (
-                <div className="quantity">
-                  <div className="count-button">-</div>
-                  <div className="count">{cartCount}</div>
-                  <div className="count-button" onClick={() => handleBuyToQuantity(index)}>+</div>
+              <div className="quantity">
+                <div
+                  className="count-button"
+                  onClick={() => handleRemoveFromCart(index)}
+                >
+                  -
                 </div>
+                <div className="count">{cartItems[index]}</div>
+                <div
+                  className="count-button"
+                  onClick={() => handleAddToCart(index)}
+                >
+                  +
+                </div>
+              </div>
             )}
           </div>
         </div>
