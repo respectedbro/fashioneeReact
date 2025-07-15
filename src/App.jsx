@@ -5,14 +5,17 @@ import Footer from './components/Footer/Footer.jsx';
 import Cart from './pages/Cart/Cart.jsx';
 import ContentBlock from './components/ContentBlock/ContentBlock.jsx';
 import {useState} from 'react';
+import AppContext from './contexts/AppContext/AppContext.jsx';
 
 function App() {
     const [currentPage, setCurrentPage] = useState('Shop');
     const [favoritesCount, setFavoritesCount] = useState(0);
     const [cartCount, setCartCount] = useState(0);
+    const [filterProducts, setFilterProducts] = useState('')
 
     return (
         <>
+            <AppContext.Provider value={{filterProducts, setFilterProducts}}>
             <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount}
                     cartCount={cartCount}
             />
@@ -24,6 +27,7 @@ function App() {
             {currentPage === 'Cart' && <Cart/>}
 
             <Footer/>
+            </AppContext.Provider>
         </>
     );
 }

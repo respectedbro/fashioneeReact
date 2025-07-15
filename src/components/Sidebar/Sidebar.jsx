@@ -1,20 +1,12 @@
 import "./Sidebar.css";
 import sidebar from "../../assets/images/season-sale-banner.svg";
-import searchIcon from "../../assets/icons/search.svg";
+import Search from '../Search/Search.jsx';
+
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <div className="search">
-        <label>
-          <input
-            className="input search-row"
-            type="text"
-            placeholder="Search"
-          />
-          <img className="search-icon" src={searchIcon} alt="search-icon" />
-        </label>
-      </div>
+      <Search/>
       <div className="sidebar-item">
         <div className="sidebar-title">Categories</div>
         <div className="sidebar-content">
