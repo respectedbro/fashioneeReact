@@ -3,10 +3,10 @@ import './Search.css'
 import {useContext} from 'react';
 import AppContext from '../../contexts/AppContext/AppContext.jsx';
 const Search = () => {
-    const {filterProducts, setFilterProducts} = useContext(AppContext)
+    const {filterText, setFilterText} = useContext(AppContext)
 
     const handleChange = (e) => {
-        setFilterProducts(e.target.value.toLowerCase())
+        setFilterText(e.target.value.toLowerCase())
     }
 
     return (
@@ -16,7 +16,7 @@ const Search = () => {
                     className="input search-row"
                     type="text"
                     placeholder="Search"
-                    value={filterProducts}
+                    value={filterText}
                     onChange={handleChange}
                 />
                 <img className="search-icon" src={searchIcon} alt="search-icon"/>

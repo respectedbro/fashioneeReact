@@ -6,10 +6,15 @@ import {useContext, useState} from 'react';
 import AppContext from '../../contexts/AppContext/AppContext.jsx';
 
 const Card = ({setFavoritesCount, setCartCount, cartCount}) => {
-    const {filterProducts} = useContext(AppContext);
-    const displayedProducts = productsData.products.slice(0, 12)
-        .filter(product => product.name.toLowerCase()
-            .includes(filterProducts.toLowerCase()));
+    const {filterText, appliedCategory} = useContext(AppContext);
+    const displayedProducts = productsData.products
+        .filter(prod => {
+            if (appliedCategory !== 'All') {
+                return prod.categories.includes(appliedCategory)
+            }
+            return true
+        }).filter(prod => prod.name.toLowerCase().includes(filterText.toLowerCase())).slice(0, 12)
+
 
     const [favorites, setFavorites] = useState(
         Array(displayedProducts.length).fill(false)

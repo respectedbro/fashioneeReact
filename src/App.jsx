@@ -11,11 +11,20 @@ function App() {
     const [currentPage, setCurrentPage] = useState('Shop');
     const [favoritesCount, setFavoritesCount] = useState(0);
     const [cartCount, setCartCount] = useState(0);
-    const [filterProducts, setFilterProducts] = useState('')
+    const [filterText, setFilterText] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('All')
+    const [appliedCategory, setAppliedCategory] = useState('All')
 
     return (
         <>
-            <AppContext.Provider value={{filterProducts, setFilterProducts}}>
+            <AppContext.Provider value={{
+                filterText,
+                setFilterText,
+                selectedCategory,
+                setSelectedCategory,
+                appliedCategory,
+                setAppliedCategory
+            }}>
             <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount}
                     cartCount={cartCount}
             />

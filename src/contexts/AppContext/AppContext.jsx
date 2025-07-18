@@ -1,8 +1,12 @@
 import {createContext} from 'react';
 
 const AppContext = createContext({
-    filterProduct: '',
-    setFilterProduct: () => {}
+    filterText: '',
+    setFilterText: () => {},
+    selectedCategory: 'All',
+    setSelectedCategory: () => {},
+    appliedCategory: 'All',
+    setAppliedCategory: () => {}
 })
 
 export default AppContext
