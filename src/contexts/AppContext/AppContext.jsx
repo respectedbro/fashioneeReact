@@ -15,6 +15,10 @@ const AppContext = createContext({
     setAppliedMinPrice: () => {},
     appliedMaxPrice: 250,
     setAppliedMaxPrice: () => {},
+    selectColors: [],
+    setSelectColors: () => {},
+    appliedColors: [],
+    setAppliedColors: () => {}
 })
 
 export default AppContext
