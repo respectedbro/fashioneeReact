@@ -6,7 +6,15 @@ const AppContext = createContext({
     selectedCategory: 'All',
     setSelectedCategory: () => {},
     appliedCategory: 'All',
-    setAppliedCategory: () => {}
+    setAppliedCategory: () => {},
+    minPrice: 0,
+    setMinPrice: () => {},
+    maxPrice: 250,
+    setMaxPrice: () => {},
+    appliedMinPrice: 0,
+    setAppliedMinPrice: () => {},
+    appliedMaxPrice: 250,
+    setAppliedMaxPrice: () => {},
 })
 
 export default AppContext

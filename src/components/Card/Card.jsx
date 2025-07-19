@@ -6,14 +6,26 @@ import {useContext, useState} from 'react';
 import AppContext from '../../contexts/AppContext/AppContext.jsx';
 
 const Card = ({setFavoritesCount, setCartCount, cartCount}) => {
-    const {filterText, appliedCategory} = useContext(AppContext);
+    const {
+        filterText,
+        appliedCategory,
+        appliedMinPrice,
+        appliedMaxPrice
+    } = useContext(AppContext);
+
     const displayedProducts = productsData.products
         .filter(prod => {
             if (appliedCategory !== 'All') {
-                return prod.categories.includes(appliedCategory)
+                return prod.categories.includes(appliedCategory);
             }
-            return true
-        }).filter(prod => prod.name.toLowerCase().includes(filterText.toLowerCase())).slice(0, 12)
+            return true;
+        })
+        .filter(prod => prod.name.toLowerCase().includes(filterText.toLowerCase()))
+        .filter(prod => {
+            const min = appliedMinPrice !== null ? appliedMinPrice : 0;
+            const max = appliedMaxPrice !== null ? appliedMaxPrice : Infinity;
+            return prod.price > min && prod.price <= max;
+        });
 
 
     const [favorites, setFavorites] = useState(

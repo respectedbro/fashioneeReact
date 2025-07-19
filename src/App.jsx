@@ -12,9 +12,12 @@ function App() {
     const [favoritesCount, setFavoritesCount] = useState(0);
     const [cartCount, setCartCount] = useState(0);
     const [filterText, setFilterText] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('All')
-    const [appliedCategory, setAppliedCategory] = useState('All')
-
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [appliedCategory, setAppliedCategory] = useState('All');
+    const [minPrice, setMinPrice] = useState(null);
+    const [maxPrice, setMaxPrice] = useState(null);
+    const [appliedMinPrice, setAppliedMinPrice] = useState(0);
+    const [appliedMaxPrice, setAppliedMaxPrice] = useState(Infinity);
     return (
         <>
             <AppContext.Provider value={{
@@ -23,19 +26,27 @@ function App() {
                 selectedCategory,
                 setSelectedCategory,
                 appliedCategory,
-                setAppliedCategory
+                setAppliedCategory,
+                minPrice,
+                setMinPrice,
+                maxPrice,
+                setMaxPrice,
+                appliedMinPrice,
+                setAppliedMinPrice,
+                appliedMaxPrice,
+                setAppliedMaxPrice
             }}>
-            <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount}
-                    cartCount={cartCount}
-            />
-            <ContentBlock currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-            {currentPage === 'Shop' && <Shop setFavoritesCount={setFavoritesCount}
-                                             setCartCount={setCartCount}
-                                             cartCount={cartCount}
-            />}
-            {currentPage === 'Cart' && <Cart/>}
+                <Header setCurrentPage={setCurrentPage} favoritesCount={favoritesCount}
+                        cartCount={cartCount}
+                />
+                <ContentBlock currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+                {currentPage === 'Shop' && <Shop setFavoritesCount={setFavoritesCount}
+                                                 setCartCount={setCartCount}
+                                                 cartCount={cartCount}
+                />}
+                {currentPage === 'Cart' && <Cart/>}
 
-            <Footer/>
+                <Footer/>
             </AppContext.Provider>
         </>
     );
