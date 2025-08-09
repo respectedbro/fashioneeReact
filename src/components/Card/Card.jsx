@@ -5,7 +5,7 @@ import productsData from "../../../products.json";
 import { useContext, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 
-const Card = ({ setFavoritesCount, setCartCount }) => {
+const Card = ({ setFavoritesCount, setCartCount, sortProduct }) => {
   const {
     filterText,
     appliedCategory,
@@ -14,7 +14,25 @@ const Card = ({ setFavoritesCount, setCartCount }) => {
     appliedColors,
   } = useContext(AppContext);
 
-  const displayedProducts = productsData.products
+  const sortProducts = (products) => {
+    const sorted = [...products];
+
+    switch (sortProduct) {
+      case "from-a":
+        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+      case "from-z":
+        return sorted.sort((a, b) => b.name.localeCompare(a.name));
+      case "ASC":
+        return sorted.sort((a, b) => a.price - b.price);
+      case "DESC":
+        return sorted.sort((a, b) => b.price - a.price);
+      case "RELEVANCE":
+      default:
+        return products;
+    }
+  };
+
+  const filteredProducts = productsData.products
     .filter((prod) => {
       if (appliedCategory !== "All") {
         return prod.categories.includes(appliedCategory);
@@ -34,8 +52,8 @@ const Card = ({ setFavoritesCount, setCartCount }) => {
         return true;
       }
       return appliedColors.includes(prod.color);
-    })
-    .slice(0, 12);
+    });
+  const displayedProducts = sortProducts(filteredProducts).slice(0, 12);
 
   const [favorites, setFavorites] = useState(
     Array(displayedProducts.length).fill(false)
