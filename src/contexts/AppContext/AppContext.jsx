@@ -19,8 +19,7 @@ const AppContext = createContext({
   setSelectColors: () => {},
   appliedColors: [],
   setAppliedColors: () => {},
-  sortProduct: "RELEVANCE",
-  setSortProduct: () => {},
+
 });
 
 export default AppContext;

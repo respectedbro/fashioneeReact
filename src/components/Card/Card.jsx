@@ -5,7 +5,7 @@ import productsData from "../../../products.json";
 import { useContext, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 
-const Card = ({ setFavoritesCount, setCartCount, sortProduct }) => {
+const Card = ({ setFavoritesCount, setCartCount, sortProduct, currPage, productsPerPage }) => {
   const {
     filterText,
     appliedCategory,
@@ -53,7 +53,12 @@ const Card = ({ setFavoritesCount, setCartCount, sortProduct }) => {
       }
       return appliedColors.includes(prod.color);
     });
-  const displayedProducts = sortProducts(filteredProducts).slice(0, 12);
+
+  const sortedProducts = sortProducts(filteredProducts);
+  const startIndex = (currPage - 1) * productsPerPage;
+  const endIndex = startIndex + productsPerPage;
+  const displayedProducts = sortedProducts.slice(startIndex, endIndex);
+
 
   const [favorites, setFavorites] = useState(
     Array(displayedProducts.length).fill(false)
