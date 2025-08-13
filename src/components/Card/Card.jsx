@@ -2,16 +2,27 @@ import heart from "../../assets/icons/heart.svg";
 import heartRed from "../../assets/icons/heart-red.svg";
 import "./Card.css";
 import productsData from "../../../products.json";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
+import Pagination from "../Pagination/Pagination.jsx";
 
-const Card = ({ setFavoritesCount, setCartCount, sortProduct, currPage, productsPerPage }) => {
+const Card = ({
+  setFavoritesCount,
+  setCartCount,
+  sortProduct,
+  productsPerPage,
+}) => {
+  const [favorites, setFavorites] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
   const {
     filterText,
     appliedCategory,
     appliedMinPrice,
     appliedMaxPrice,
     appliedColors,
+    currPage,
+    setCurrPage,
   } = useContext(AppContext);
 
   const sortProducts = (products) => {
@@ -44,7 +55,7 @@ const Card = ({ setFavoritesCount, setCartCount, sortProduct, currPage, products
     )
     .filter((prod) => {
       const min = appliedMinPrice !== null ? appliedMinPrice : 0;
-      const max = appliedMaxPrice !== null ? appliedMaxPrice : Infinity;
+      const max = appliedMaxPrice !== null ? appliedMaxPrice : 250;
       return prod.price > min && prod.price <= max;
     })
     .filter((prod) => {
@@ -55,18 +66,16 @@ const Card = ({ setFavoritesCount, setCartCount, sortProduct, currPage, products
     });
 
   const sortedProducts = sortProducts(filteredProducts);
+
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
   const startIndex = (currPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
   const displayedProducts = sortedProducts.slice(startIndex, endIndex);
 
-
-  const [favorites, setFavorites] = useState(
-    Array(displayedProducts.length).fill(false)
-  );
-
-  const [cartItems, setCartItems] = useState(
-    Array(displayedProducts.length).fill(0)
-  );
+  useEffect(() => {
+    setFavorites(Array(displayedProducts.length).fill(false));
+    setCartItems(Array(displayedProducts.length).fill(0));
+  }, [displayedProducts.length]);
 
   const toggleFavorite = (index) => {
     const newFavorites = [...favorites];
@@ -94,57 +103,69 @@ const Card = ({ setFavoritesCount, setCartCount, sortProduct, currPage, products
   };
 
   return (
-    <div className="products">
-      {displayedProducts.map((product, index) => (
-        <div className="product" key={product.id}>
-          <div className="photo">
-            <img src={product.image} alt={product.name} />
-            <div className="top-bar">
-              <div className="labels">
-                {product.isSale && <span className="label sale">Sale</span>}
-                {product.isNew && <span className="label new">New</span>}
-              </div>
-              <div className="favorites" onClick={() => toggleFavorite(index)}>
-                <img src={favorites[index] ? heartRed : heart} alt="heart" />
-              </div>
-            </div>
-          </div>
-          <div className="info">
-            <div className="name">{product.name}</div>
-            <div className="price">
-              <div className="current-price">{product.price}</div>
-              <div className="old-price">{product.oldPrice}</div>
-            </div>
-          </div>
-          <div className="buy-product">
-            {cartItems[index] === 0 ? (
-              <button
-                className="buy-button"
-                onClick={() => handleAddToCart(index)}
-              >
-                Buy
-              </button>
-            ) : (
-              <div className="quantity">
-                <div
-                  className="count-button"
-                  onClick={() => handleRemoveFromCart(index)}
-                >
-                  -
+    <>
+      <div className="products">
+        {displayedProducts.map((product, index) => (
+          <div className="product" key={product.id}>
+            <div className="photo">
+              <img src={product.image} alt={product.name} />
+              <div className="top-bar">
+                <div className="labels">
+                  {product.isSale && <span className="label sale">Sale</span>}
+                  {product.isNew && <span className="label new">New</span>}
                 </div>
-                <div className="count">{cartItems[index]}</div>
                 <div
-                  className="count-button"
+                  className="favorites"
+                  onClick={() => toggleFavorite(index)}
+                >
+                  <img src={favorites[index] ? heartRed : heart} alt="heart" />
+                </div>
+              </div>
+            </div>
+            <div className="info">
+              <div className="name">{product.name}</div>
+              <div className="price">
+                <div className="current-price">{product.price}</div>
+                <div className="old-price">{product.oldPrice}</div>
+              </div>
+            </div>
+            <div className="buy-product">
+              {cartItems[index] === 0 ? (
+                <button
+                  className="buy-button"
                   onClick={() => handleAddToCart(index)}
                 >
-                  +
+                  Buy
+                </button>
+              ) : (
+                <div className="quantity">
+                  <div
+                    className="count-button"
+                    onClick={() => handleRemoveFromCart(index)}
+                  >
+                    -
+                  </div>
+                  <div className="count">{cartItems[index]}</div>
+                  <div
+                    className="count-button"
+                    onClick={() => handleAddToCart(index)}
+                  >
+                    +
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      {totalPages > 1 && (
+        <Pagination
+          currPage={currPage}
+          totalPages={totalPages}
+          setCurrPage={setCurrPage}
+        />
+      )}
+    </>
   );
 };
 

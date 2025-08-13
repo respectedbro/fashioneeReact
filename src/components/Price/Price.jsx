@@ -1,38 +1,44 @@
-import './Prise.css';
-import AppContext from '../../contexts/AppContext/AppContext.jsx';
-import {useContext} from 'react';
-
+import "./Price.css";
+import AppContext from "../../contexts/AppContext/AppContext.jsx";
+import { useContext } from "react";
 
 const Price = () => {
-    const {
-        minPrice, setMinPrice,
-        maxPrice, setMaxPrice
-    } = useContext(AppContext);
+  const { minPrice, setMinPrice, maxPrice, setMaxPrice } =
+    useContext(AppContext);
 
+  const handleMinChange = (e) => {
+    const value = e.target.value;
+    setMinPrice(value === "" ? null : Number(value));
+  };
 
-    return (
-        <div className="sidebar-item">
-            <div className="sidebar-title">Price</div>
-            <div className="sidebar-content">
-                <div className="price-bar">
-                    <input
-                        className="input"
-                        type="number"
-                        placeholder="0"
-                        value={minPrice || ''}
-                        onChange={(e) => setMinPrice(e.target.value) || 0}
-                    />
-                    <input
-                        className="input"
-                        type="number"
-                        placeholder="250"
-                        value={maxPrice || ''}
-                        onChange={(e) => setMaxPrice(e.target.value) || Infinity}
-                    />
-                </div>
-            </div>
+  const handleMaxChange = (e) => {
+    const value = e.target.value;
+    setMaxPrice(value === "" ? null : Number(value));
+  };
+
+  return (
+    <div className="sidebar-item">
+      <div className="sidebar-title">Price</div>
+      <div className="sidebar-content">
+        <div className="price-bar">
+          <input
+            className="input"
+            type="number"
+            placeholder="0"
+            value={minPrice || ""}
+            onChange={handleMinChange}
+          />
+          <input
+            className="input"
+            type="number"
+            placeholder="250"
+            value={maxPrice || ""}
+            onChange={handleMaxChange}
+          />
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Price;

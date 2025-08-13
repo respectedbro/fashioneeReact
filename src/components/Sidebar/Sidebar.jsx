@@ -17,6 +17,7 @@ const Sidebar = () => {
     setAppliedMaxPrice,
     selectColors,
     setAppliedColors,
+    setCurrPage,
   } = useContext(AppContext);
 
   const handleApplyFilters = () => {
@@ -24,6 +25,7 @@ const Sidebar = () => {
     setAppliedMinPrice(minPrice);
     setAppliedMaxPrice(maxPrice);
     setAppliedColors(selectColors);
+    setCurrPage(1);
   };
   return (
     <div className="sidebar">

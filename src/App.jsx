@@ -20,6 +20,7 @@ function App() {
   const [appliedMaxPrice, setAppliedMaxPrice] = useState(Infinity);
   const [selectColors, setSelectColors] = useState([]);
   const [appliedColors, setAppliedColors] = useState([]);
+  const [currPage, setCurrPage] = useState(1);
   return (
     <>
       <AppContext.Provider
@@ -42,6 +43,8 @@ function App() {
           setSelectColors,
           appliedColors,
           setAppliedColors,
+          currPage,
+          setCurrPage,
         }}
       >
         <Header

@@ -1,6 +1,8 @@
 import { createContext } from "react";
 
 const AppContext = createContext({
+  currPage: 1,
+  setCurrPage: () => {},
   filterText: "",
   setFilterText: () => {},
   selectedCategory: "All",
@@ -19,7 +21,6 @@ const AppContext = createContext({
   setSelectColors: () => {},
   appliedColors: [],
   setAppliedColors: () => {},
-
 });
 
 export default AppContext;
