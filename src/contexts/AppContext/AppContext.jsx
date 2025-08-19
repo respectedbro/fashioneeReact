@@ -21,6 +21,10 @@ const AppContext = createContext({
   setSelectColors: () => {},
   appliedColors: [],
   setAppliedColors: () => {},
+  cartItems: [],
+  setCartItems: () => {},
+  promoApplied: false,
+  setPromoApplied: () => {},
 });
 
 export default AppContext;

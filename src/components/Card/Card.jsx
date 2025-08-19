@@ -2,7 +2,7 @@ import heart from "../../assets/icons/heart.svg";
 import heartRed from "../../assets/icons/heart-red.svg";
 import "./Card.css";
 import productsData from "../../../products.json";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 import Pagination from "../Pagination/Pagination.jsx";
 
@@ -13,7 +13,7 @@ const Card = ({
   productsPerPage,
 }) => {
   const [favorites, setFavorites] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, setCartItems } = useContext(AppContext);
 
   const {
     filterText,
@@ -72,11 +72,6 @@ const Card = ({
   const endIndex = startIndex + productsPerPage;
   const displayedProducts = sortedProducts.slice(startIndex, endIndex);
 
-  useEffect(() => {
-    setFavorites(Array(displayedProducts.length).fill(false));
-    setCartItems(Array(displayedProducts.length).fill(0));
-  }, [displayedProducts.length]);
-
   const toggleFavorite = (index) => {
     const newFavorites = [...favorites];
     newFavorites[index] = !newFavorites[index];
@@ -86,20 +81,40 @@ const Card = ({
     setFavoritesCount(count);
   };
 
-  const handleAddToCart = (index) => {
+  const handleAddToCart = (product) => {
     const newCartItems = [...cartItems];
-    newCartItems[index] += 1;
+    const itemIndex = newCartItems.findIndex((item) => item.id === product.id);
+    if (itemIndex >= 0) {
+      newCartItems[itemIndex].quantity += 1;
+    } else {
+      newCartItems.push({
+        ...product,
+        quantity: 1,
+      });
+    }
+
     setCartItems(newCartItems);
-    setCartCount(newCartItems.reduce((sum, item) => sum + item, 0));
+    setCartCount(newCartItems.reduce((sum, item) => sum + item.quantity, 0));
   };
 
-  const handleRemoveFromCart = (index) => {
-    if (cartItems[index] > 0) {
-      const newCartItems = [...cartItems];
-      newCartItems[index] -= 1;
+  const handleRemoveFromCart = (product) => {
+    const newCartItems = [...cartItems];
+    const itemIndex = newCartItems.findIndex((item) => item.id === product.id);
+
+    if (itemIndex >= 0) {
+      if (newCartItems[itemIndex].quantity > 1) {
+        newCartItems[itemIndex].quantity -= 1;
+      } else {
+        newCartItems.splice(itemIndex, 1);
+      }
       setCartItems(newCartItems);
-      setCartCount(newCartItems.reduce((sum, item) => sum + item, 0));
+      setCartCount(newCartItems.reduce((sum, item) => sum + item.quantity, 0));
     }
+  };
+
+  const getProductQuantity = (productId) => {
+    const item = cartItems.find((item) => item.id === productId);
+    return item ? item.quantity : 0;
   };
 
   return (
@@ -130,10 +145,10 @@ const Card = ({
               </div>
             </div>
             <div className="buy-product">
-              {cartItems[index] === 0 ? (
+              {getProductQuantity(product.id) === 0 ? (
                 <button
                   className="buy-button"
-                  onClick={() => handleAddToCart(index)}
+                  onClick={() => handleAddToCart(product)}
                 >
                   Buy
                 </button>
@@ -141,14 +156,14 @@ const Card = ({
                 <div className="quantity">
                   <div
                     className="count-button"
-                    onClick={() => handleRemoveFromCart(index)}
+                    onClick={() => handleRemoveFromCart(product)}
                   >
                     -
                   </div>
-                  <div className="count">{cartItems[index]}</div>
+                  <div className="count">{getProductQuantity(product.id)}</div>
                   <div
                     className="count-button"
-                    onClick={() => handleAddToCart(index)}
+                    onClick={() => handleAddToCart(product)}
                   >
                     +
                   </div>

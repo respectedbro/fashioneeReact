@@ -7,8 +7,15 @@ import searchIcon from "../../assets/icons/search.svg";
 import userIcon from "../../assets/icons/user.svg";
 import heartIcon from "../../assets/icons/heart.svg";
 import cartIcon from "../../assets/icons/cart.svg";
+import { useContext } from "react";
+import AppContext from "../../contexts/AppContext/AppContext.jsx";
 
-const Header = ({ setCurrentPage, favoritesCount, cartCount }) => {
+const Header = ({ setCurrentPage, favoritesCount }) => {
+  const { cartItems } = useContext(AppContext);
+  const cartCount = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 0),
+    0
+  );
   return (
     <header className="header container-1800">
       <div className="left-side">

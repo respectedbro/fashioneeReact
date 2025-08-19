@@ -1,125 +1,54 @@
 import "./Cart.css";
-import arrowWhite from "../../assets/icons/arrow-white.svg";
+import CartProduct from "../../components/CartProduct/CartProduct.jsx";
+import CartOrder from "../../components/CartOrder/CartOrder.jsx";
+import CartPromo from "../../components/CartPromo/CartPromo.jsx";
+import { useContext } from "react";
+import AppContext from "../../contexts/AppContext/AppContext.jsx";
 
 const Cart = () => {
+  const { cartItems, setCartItems } = useContext(AppContext);
+
+  const handleRemoveItem = (productId) => {
+    setCartItems(cartItems.filter((item) => item.id !== productId));
+  };
+
+  const handleQuantityItem = (productId, newQuantity) => {
+    if (newQuantity <= 0) {
+      handleRemoveItem(productId);
+      return;
+    }
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.id === productId) {
+          return { ...item, quantity: newQuantity };
+        } else {
+          return item;
+        }
+      })
+    );
+  };
+
   return (
     <div className="container">
       <section className="cart">
         <div className="order-wrapper">
           <div className="product-list">
-            <div className="product">
-              <div className="photo"></div>
-              <div className="product-info">
-                <div className="title">Fashionee - Cotton Shirt (S)</div>
-                <div className="price-wrapper">
-                  <div className="price-and-quantity">
-                    <div className="price">
-                      <div className="old-price">$52.99</div>
-                      <div className="current-price">$35.99</div>
-                    </div>
-                    <div className="quantity">
-                      <div className="count-button">-</div>
-                      <div className="count">1</div>
-                      <div className="count-button">+</div>
-                    </div>
-                  </div>
-                  <div className="total-price">$35.99</div>
-                </div>
-                <div className="close">x</div>
-              </div>
-            </div>
-            <div className="product">
-              <div className="photo"></div>
-              <div className="product-info">
-                <div className="title">Spray wrap skirt</div>
-                <div className="price-wrapper">
-                  <div className="price-and-quantity">
-                    <div className="price">
-                      <div className="current-price">$110.99</div>
-                    </div>
-                    <div className="quantity">
-                      <div className="count-button">-</div>
-                      <div className="count">1</div>
-                      <div className="count-button">+</div>
-                    </div>
-                  </div>
-                  <div className="total-price">$110.99</div>
-                </div>
-                <div className="close">x</div>
-              </div>
-            </div>
+            {cartItems.length > 0 ? (
+              cartItems.map((product) => (
+                <CartProduct
+                  key={product.id}
+                  product={product}
+                  onRemove={handleRemoveItem}
+                  onQuantityItem={handleQuantityItem}
+                />
+              ))
+            ) : (
+              <div>Cart is empty</div>
+            )}
           </div>
-          <div className="order">
-            <div className="title">Your Order</div>
-            <div className="order-price-wrapper">
-              <div className="price-row">
-                <div className="name">Order price</div>
-                <div className="price">$146.98</div>
-              </div>
-              <div className="price-row">
-                <div className="name">Discount for promo code</div>
-                <div>No</div>
-              </div>
-              <div className="price-row delimiter">
-                <div className="name">
-                  Delivery <span className="additional">(Aug 02 at 16:00)</span>
-                </div>
-                <div className="price">$16</div>
-              </div>
-              <div className="price-row total">
-                <div className="name">Total</div>
-                <div className="price">$162.98</div>
-              </div>
-            </div>
-            <div className="button-wrapper">
-              <button className="button">Checkout</button>
-              <div className="vertical-line"></div>
-            </div>
-          </div>
+          <CartOrder cartItems={cartItems} />
         </div>
-        <div className="promo-code-wrapper">
-          <div className="info">
-            <div className="title">You Have A Promo Code?</div>
-            <div className="description">
-              To receive up-to-date promotional codes, subscribe to us on social
-              networks.
-            </div>
-          </div>
-          <div className="promo-code">
-            <input
-              className="input"
-              type="text"
-              name="promo-code"
-              placeholder="Enter promo code"
-            />
-            <div className="button-wrapper">
-              <button className="button">
-                <img src={arrowWhite} alt="arrow-icon" />
-              </button>
-              <div className="vertical-line"></div>
-            </div>
-          </div>
-          <div className="find-us">
-            <div className="find-us-text">Find us here:</div>
-            <div className="find-us-links">
-              <div className="find-us-link">
-                <a href="">fb</a>
-              </div>
-              <div className="line"></div>
-              <div className="find-us-link">
-                <a href="">tw</a>
-              </div>
-              <div className="line"></div>
-              <div className="find-us-link">
-                <a href="">ins</a>
-              </div>
-              <div className="line"></div>
-              <div className="find-us-link">
-                <a href="">pt</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CartPromo cartItems={cartItems} />
       </section>
     </div>
   );

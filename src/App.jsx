@@ -21,6 +21,8 @@ function App() {
   const [selectColors, setSelectColors] = useState([]);
   const [appliedColors, setAppliedColors] = useState([]);
   const [currPage, setCurrPage] = useState(1);
+  const [cartItems, setCartItems] = useState([]);
+  const [promoApplied, setPromoApplied] = useState("");
   return (
     <>
       <AppContext.Provider
@@ -45,6 +47,10 @@ function App() {
           setAppliedColors,
           currPage,
           setCurrPage,
+          cartItems,
+          setCartItems,
+          promoApplied,
+          setPromoApplied,
         }}
       >
         <Header
