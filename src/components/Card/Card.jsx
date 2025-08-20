@@ -1,7 +1,6 @@
 import heart from "../../assets/icons/heart.svg";
 import heartRed from "../../assets/icons/heart-red.svg";
 import "./Card.css";
-import productsData from "../../../products.json";
 import { useContext, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 import Pagination from "../Pagination/Pagination.jsx";
@@ -11,19 +10,11 @@ const Card = ({
   setCartCount,
   sortProduct,
   productsPerPage,
+  filteredProducts,
 }) => {
   const [favorites, setFavorites] = useState([]);
-  const { cartItems, setCartItems } = useContext(AppContext);
-
-  const {
-    filterText,
-    appliedCategory,
-    appliedMinPrice,
-    appliedMaxPrice,
-    appliedColors,
-    currPage,
-    setCurrPage,
-  } = useContext(AppContext);
+  const { cartItems, setCartItems, currPage, setCurrPage } =
+    useContext(AppContext);
 
   const sortProducts = (products) => {
     const sorted = [...products];
@@ -42,28 +33,6 @@ const Card = ({
         return products;
     }
   };
-
-  const filteredProducts = productsData.products
-    .filter((prod) => {
-      if (appliedCategory !== "All") {
-        return prod.categories.includes(appliedCategory);
-      }
-      return true;
-    })
-    .filter((prod) =>
-      prod.name.toLowerCase().includes(filterText.toLowerCase())
-    )
-    .filter((prod) => {
-      const min = appliedMinPrice !== null ? appliedMinPrice : 0;
-      const max = appliedMaxPrice !== null ? appliedMaxPrice : 250;
-      return prod.price > min && prod.price <= max;
-    })
-    .filter((prod) => {
-      if (appliedColors.length === 0) {
-        return true;
-      }
-      return appliedColors.includes(prod.color);
-    });
 
   const sortedProducts = sortProducts(filteredProducts);
 

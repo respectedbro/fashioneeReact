@@ -1,8 +1,9 @@
-const Sort = ({ onSortChange }) => {
+const Sort = ({ onSortChange, productsCount }) => {
   return (
     <div className="sort-and-count">
       <div className="products-count">
-        There are <span className="bold">67</span> products in this category
+        There are <span className="bold">{productsCount}</span> products in this
+        category
       </div>
       <div className="sort">
         <select
