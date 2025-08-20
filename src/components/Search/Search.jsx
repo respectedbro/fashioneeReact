@@ -8,7 +8,7 @@ const Search = () => {
   const { filterText, setFilterText } = useContext(AppContext);
   const [localValue, setLocalValue] = useState(filterText);
 
-  const debouncedSetFilterText = useCallback(
+  const debounceText = useCallback(
     debounce((value) => {
       setFilterText(value);
     }, 500),
@@ -18,7 +18,7 @@ const Search = () => {
   const handleChange = (e) => {
     const value = e.target.value.toLowerCase();
     setLocalValue(value);
-    debouncedSetFilterText(value);
+    debounceText(value);
   };
 
   return (
