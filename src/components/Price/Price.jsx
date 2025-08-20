@@ -7,13 +7,15 @@ const Price = () => {
     useContext(AppContext);
 
   const handleMinChange = (e) => {
-    const value = e.target.value;
-    setMinPrice(value === "" ? null : Number(value));
+    const value =
+      e.target.value === "" ? null : Math.max(0, Number(e.target.value));
+    setMinPrice(value);
   };
 
   const handleMaxChange = (e) => {
-    const value = e.target.value;
-    setMaxPrice(value === "" ? null : Number(value));
+    const value =
+      e.target.value === "" ? null : Math.max(0, Number(e.target.value));
+    setMaxPrice(value);
   };
 
   return (

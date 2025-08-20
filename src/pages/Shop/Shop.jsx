@@ -31,9 +31,9 @@ const Shop = ({ setFavoritesCount, setCartCount, cartCount }) => {
         prod.name.toLowerCase().includes(filterText.toLowerCase())
       )
       .filter((prod) => {
-        const min = appliedMinPrice !== null ? appliedMinPrice : 0;
+        const min = appliedMinPrice !== null ? Math.max(0, appliedMinPrice) : 0;
         const max = appliedMaxPrice !== null ? appliedMaxPrice : 250;
-        return prod.price > min && prod.price <= max;
+        return prod.price >= min && prod.price <= max;
       })
       .filter((prod) => {
         if (appliedColors.length === 0) {

@@ -41,7 +41,7 @@ const CartProduct = ({ product, onRemove, onQuantityItem }) => {
               </div>
             </div>
             <div className="total-price">
-              ${product.price * product.quantity.toFixed(2)}
+              ${(product.price * product.quantity).toFixed(2)}
             </div>
           </div>
           <div className="close" onClick={() => onRemove(product.id)}>

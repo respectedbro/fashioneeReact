@@ -1,28 +1,40 @@
-import searchIcon from '../../assets/icons/search.svg';
-import './Search.css'
-import {useContext} from 'react';
-import AppContext from '../../contexts/AppContext/AppContext.jsx';
+import searchIcon from "../../assets/icons/search.svg";
+import "./Search.css";
+import { useCallback, useContext, useState } from "react";
+import AppContext from "../../contexts/AppContext/AppContext.jsx";
+import { debounce } from "lodash";
+
 const Search = () => {
-    const {filterText, setFilterText} = useContext(AppContext)
+  const { filterText, setFilterText } = useContext(AppContext);
+  const [localValue, setLocalValue] = useState(filterText);
 
-    const handleChange = (e) => {
-        setFilterText(e.target.value.toLowerCase())
-    }
+  const debouncedSetFilterText = useCallback(
+    debounce((value) => {
+      setFilterText(value);
+    }, 500),
+    [setFilterText]
+  );
 
-    return (
-        <div className="search">
-            <label>
-                <input
-                    className="input search-row"
-                    type="text"
-                    placeholder="Search"
-                    value={filterText}
-                    onChange={handleChange}
-                />
-                <img className="search-icon" src={searchIcon} alt="search-icon"/>
-            </label>
-        </div>
-    )
-}
+  const handleChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setLocalValue(value);
+    debouncedSetFilterText(value);
+  };
 
-export default Search
+  return (
+    <div className="search">
+      <label>
+        <input
+          className="input search-row"
+          type="text"
+          placeholder="Search"
+          value={localValue}
+          onChange={handleChange}
+        />
+        <img className="search-icon" src={searchIcon} alt="search-icon" />
+      </label>
+    </div>
+  );
+};
+
+export default Search;
