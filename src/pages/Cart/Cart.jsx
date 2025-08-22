@@ -1,4 +1,4 @@
-import "./Cart.css";
+import "./Cart.scss";
 import CartProduct from "../../components/CartProduct/CartProduct.jsx";
 import CartOrder from "../../components/CartOrder/CartOrder.jsx";
 import CartPromo from "../../components/CartPromo/CartPromo.jsx";

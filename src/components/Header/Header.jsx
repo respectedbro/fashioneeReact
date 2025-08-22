@@ -1,4 +1,4 @@
-import "./Header.css";
+import "./Header.scss";
 
 import logo from "../../assets/icons/logo.svg";
 import arrow from "../../assets/icons/arrow.svg";

@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/globals.scss";
 import Shop from "./pages/Shop/Shop.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";

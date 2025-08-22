@@ -1,0 +1,46 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.shop {
+  display: flex;
+  gap: 51px;
+  margin-top: 200px;
+
+  @include responsive(xl) {
+    margin-top: 100px;
+  }
+
+  @include responsive(md) {
+    margin-top: 70px;
+  }
+}
+
+.products-wrapper {
+  max-width: 846px;
+  width: 100%;
+  @include flex-col;
+  gap: $spacing-xxl;
+}
+
+.sort-and-count {
+  @include flex-between;
+  gap: 30px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+
+  .bold {
+    font-weight: 600;
+    color: $color-black;
+  }
+
+  .sort {
+    max-width: 262px;
+    width: 100%;
+  }
+
+  .input {
+    color: $color-black;
+    cursor: pointer;
+  }
+}

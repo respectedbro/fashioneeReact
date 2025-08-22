@@ -1,0 +1,58 @@
+@mixin container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@mixin input-style {
+  border: none;
+  border-bottom: 1px solid $color-border;
+  width: 100%;
+  color: $color-text-secondary;
+  outline: none;
+  padding: 0 0 15px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (max-width: #{$breakpoint-md}) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (max-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (max-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}

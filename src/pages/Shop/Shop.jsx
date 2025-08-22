@@ -1,4 +1,4 @@
-import "./Shop.css";
+import "./Shop.scss";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Card from "../../components/Card/Card.jsx";
 import Sort from "../../components/Sort/Sort.jsx";
