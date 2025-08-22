@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+
 * {
   font-family: "Raleway", sans-serif;
   color: #444;
@@ -197,4 +199,3 @@
 .menu .menu-item:hover .arrow-default {
   display: none;
 }
-
