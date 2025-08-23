@@ -1,6 +1,6 @@
 import heart from "../../assets/icons/heart.svg";
 import heartRed from "../../assets/icons/heart-red.svg";
-import "./Card.css";
+import "./Card.scss";
 import { useContext, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 import Pagination from "../Pagination/Pagination.jsx";

@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "./Footer.scss";
 
 import payoneer from "../../assets/icons/poneer.svg";
 import paypal from "../../assets/icons/ppal.svg";

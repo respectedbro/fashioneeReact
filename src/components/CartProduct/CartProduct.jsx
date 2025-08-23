@@ -1,4 +1,4 @@
-import "./CartProduct.css";
+import "./CartProduct.scss";
 
 const CartProduct = ({ product, onRemove, onQuantityItem }) => {
   return (

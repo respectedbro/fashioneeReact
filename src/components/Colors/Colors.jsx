@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import "./Colors.css";
+import "./Colors.scss";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 import productData from "../../../products.json";
 

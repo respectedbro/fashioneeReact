@@ -1,5 +1,5 @@
 import searchIcon from "../../assets/icons/search.svg";
-import "./Search.css";
+import "./Search.scss";
 import { useCallback, useContext, useState } from "react";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 import { debounce } from "lodash";

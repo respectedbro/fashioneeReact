@@ -1,4 +1,4 @@
-import "./Sidebar.css";
+import "./Sidebar.scss";
 import sidebar from "../../assets/images/season-sale-banner.svg";
 import Search from "../Search/Search.jsx";
 import Categories from "../Categories/Categories.jsx";

@@ -1,3 +1,6 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -13,98 +16,101 @@
   display: flex;
   gap: 65px;
   align-items: center;
-}
 
-.header .left-side .logo-container {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
+  .logo-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
 
-/*==============================*/
-.header .left-side .logo-container .burger-menu .burger-checkbox {
-  position: absolute;
-  visibility: hidden;
-}
-.header .left-side .logo-container .burger-menu .burger {
-  cursor: pointer;
-  display: block;
-  position: relative;
-  border: none;
-  background: transparent;
-  width: 22px;
-  height: 14px;
-}
-.header .left-side .logo-container .burger-menu .burger::before,
-.header .left-side .logo-container .burger-menu .burger::after {
-  content: "";
-  left: 0;
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 2px;
-  border-radius: 10px;
-  background: #000;
-}
-.header .left-side .logo-container .burger-menu .burger::before {
-  top: 0;
-  box-shadow: 0 11px 0 #000;
-  transition: box-shadow 0.3s 0.15s, top 0.3s 0.15s, transform 0.3s;
-}
-.header .left-side .logo-container .burger-menu .burger::after {
-  bottom: 6.5px;
-  transition: bottom 0.3s 0.15s, transform 0.3s;
-}
-.header
-  .left-side
-  .logo-container
-  .burger-menu
-  .burger-checkbox:checked
-  + .burger::before {
-  top: 2px;
-  transform: rotate(45deg);
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
-  transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
-}
-.header
-  .left-side
-  .logo-container
-  .burger-menu
-  .burger-checkbox:checked
-  + .burger::after {
-  bottom: 10px;
-  transform: rotate(-45deg);
-  transition: bottom 0.3s, transform 0.3s 0.15s;
-}
+    .burger-menu {
+      .burger-checkbox {
+        position: absolute;
+        visibility: hidden;
+      }
 
-.header .left-side .logo-container .logo {
-  display: flex;
+      .burger {
+        cursor: pointer;
+        display: block;
+        position: relative;
+        border: none;
+        background: transparent;
+        width: 22px;
+        height: 14px;
+
+        &::before,
+        &::after {
+          content: "";
+          left: 0;
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 2px;
+          border-radius: 10px;
+          background: $color-black;
+          transition: all 0.3s ease;
+        }
+
+        &::before {
+          top: 0;
+          box-shadow: 0 11px 0 $color-black;
+          transition: box-shadow 0.3s 0.15s, top 0.3s 0.15s, transform 0.3s;
+        }
+
+        &::after {
+          bottom: 6.5px;
+          transition: bottom 0.3s 0.15s, transform 0.3s;
+        }
+      }
+
+      .burger-checkbox:checked + .burger {
+        &::before {
+          top: 2px;
+          transform: rotate(45deg);
+          box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
+          transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+        }
+
+        &::after {
+          bottom: 10px;
+          transform: rotate(-45deg);
+          transition: bottom 0.3s, transform 0.3s 0.15s;
+        }
+      }
+    }
+
+    .logo {
+      display: flex;
+    }
+  }
 }
 
 .header .right-side {
   display: flex;
   align-items: center;
   gap: 40px;
+
+  .header-icon {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    .counter {
+      background-color: $color-black;
+      color: $color-white;
+      padding: 3px 7px;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 14px;
+      min-width: 20px;
+      text-align: center;
+    }
+  }
 }
 
-.header .right-side .header-icon {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-}
-
-.header .right-side .header-icon .counter {
-  background-color: #000000;
-  color: #fff;
-  padding: 3px 7px;
-  border-radius: 50%;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-}
-
-@media screen and (max-width: 1080px) {
+@include responsive(xl) {
   .hero-section .hero-line {
     display: none;
   }
@@ -112,11 +118,8 @@
   .hero-section .hero-image {
     margin-right: 0;
   }
-  .menu {
-    display: none;
-  }
 
-  .header .right-side {
+  .menu {
     display: none;
   }
 
@@ -125,15 +128,56 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@include responsive(md) {
   .shop {
     margin-top: 50px;
   }
 }
 
-@media screen and (max-width: 540px) {
+@include responsive(sm) {
   .hero-section {
     flex-direction: column;
     gap: 15px;
+  }
+
+  .header .left-side {
+    gap: $spacing-xl;
+
+    .logo-container {
+      gap: $spacing-lg;
+    }
+  }
+}
+
+@include responsive(lg) {
+  .header {
+    .left-side {
+      gap: $spacing-xxl;
+
+      .logo-container {
+        gap: $spacing-xl;
+      }
+    }
+
+    .right-side {
+      gap: $spacing-xl;
+    }
+  }
+}
+
+@include responsive(md) {
+  .header {
+    flex-direction: column;
+    gap: $spacing-lg;
+    align-items: center;
+
+    .left-side,
+    .right-side {
+      justify-content: center;
+    }
+  }
+
+  .container-1800 {
+    margin: 30px auto 0 auto;
   }
 }

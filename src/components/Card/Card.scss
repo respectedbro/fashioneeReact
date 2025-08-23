@@ -1,0 +1,151 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.shop .products-wrapper .products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px 29px;
+
+  @include responsive(xl) {
+    gap: 30px 20px;
+    justify-content: space-around;
+  }
+
+  @include responsive(lg) {
+    gap: 30px 20px;
+    justify-content: center;
+  }
+
+  @include responsive(md) {
+    gap: 30px 20px;
+    justify-content: center;
+  }
+
+  .product {
+    max-width: 262px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include responsive(sm) {
+      max-width: 280px;
+    }
+
+    .photo {
+      position: relative;
+
+      img {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+      }
+
+      .top-bar {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 222px;
+
+        .labels {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+
+          .label {
+            font-family: $font-primary;
+            font-weight: 800;
+            font-size: 10px;
+            line-height: 1;
+            text-transform: uppercase;
+            color: $color-white;
+            padding: 5px 10px;
+            background: $color-pink;
+
+            &.new {
+              background: #95ccb5;
+            }
+
+            &.sale {
+              background: $color-pink;
+            }
+          }
+        }
+      }
+    }
+
+    .info {
+      @include flex-col;
+      gap: 9px;
+
+      .name {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .price {
+        display: flex;
+        gap: 15px;
+        font-family: $font-secondary;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1;
+        align-items: center;
+
+        .current-price {
+          font-family: $font-secondary;
+          color: $color-black;
+        }
+
+        .old-price {
+          font-family: $font-secondary;
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 1;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
+
+.favorites {
+  cursor: pointer;
+}
+
+.buy-button {
+  width: 100%;
+  padding: 12px;
+}
+
+.price-and-quantity {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+.quantity {
+  background: #f8f8fb;
+  display: flex;
+  gap: 20px;
+  padding: 17px 23px;
+  justify-content: space-evenly;
+
+  .count-button {
+    cursor: pointer;
+    color: #999;
+    font-size: 20px;
+  }
+}
+
+.count {
+  color: $color-black;
+  font-size: 18px;
+}

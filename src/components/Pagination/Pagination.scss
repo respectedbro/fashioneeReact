@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+
+  .pages {
+    display: flex;
+    gap: 20px;
+  }
+
+  .page {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    border-bottom: 3px solid $color-black;
+    height: 25px;
+    opacity: 0.5;
+    width: 10px;
+    text-align: center;
+    cursor: pointer;
+
+    &.active {
+      opacity: 1;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+      width: 22px;
+      color: $color-black;
+    }
+  }
+  .button {
+    background-color: $color-white;
+    max-width: 55px;
+    cursor: pointer;
+  }
+}

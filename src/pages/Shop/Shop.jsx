@@ -63,16 +63,15 @@ const Shop = ({ setFavoritesCount, setCartCount, cartCount }) => {
             onSortChange={onSortChange}
             productsCount={filteredProducts.length}
           />
-          <div className="products">
-            <Card
-              setFavoritesCount={setFavoritesCount}
-              setCartCount={setCartCount}
-              cartCount={cartCount}
-              sortProduct={sortProduct}
-              productsPerPage={PRODUCTS_PER_PAGE}
-              filteredProducts={filteredProducts}
-            />
-          </div>
+
+          <Card
+            setFavoritesCount={setFavoritesCount}
+            setCartCount={setCartCount}
+            cartCount={cartCount}
+            sortProduct={sortProduct}
+            productsPerPage={PRODUCTS_PER_PAGE}
+            filteredProducts={filteredProducts}
+          />
         </div>
       </section>
     </div>

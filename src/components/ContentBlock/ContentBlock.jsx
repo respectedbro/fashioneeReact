@@ -1,4 +1,4 @@
-import "./ContentBlock.css";
+import "./ContentBlock.scss";
 import heroImg from "../../assets/images/no-photo.webp";
 
 const ContentBlock = ({ setCurrentPage, currentPage }) => {

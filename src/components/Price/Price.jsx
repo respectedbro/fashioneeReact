@@ -1,4 +1,4 @@
-import "./Price.css";
+import "./Price.scss";
 import AppContext from "../../contexts/AppContext/AppContext.jsx";
 import { useContext } from "react";
 
